@@ -30,13 +30,8 @@ if(process.env.MODE === "dev"){
 }
 
 
-//simple route
-app.get("/", (req, res) => {
-    res.json({
-        message: "Welcome to my app"
-    });
-});
 
+require("./routes/tutorial.routes")(app);
 //set post, listen for requests
 const PORT = process.env.PORT || 8080;
 app.listen(PORT, () => {
