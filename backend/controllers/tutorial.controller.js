@@ -22,7 +22,7 @@ exports.createComment = (tutorialId, comment) => {
         tutorialId: tutorialId,
     }).then((comment) => {
         console.log(`>> Created Comment ${JSON.stringify(comment, null, 4)}`);
-        return tutorial;
+        return comment;
     }).catch((err) => {
         console.error(">> Error while creating comment: ", err);
     });
