@@ -1,3 +1,4 @@
+const e = require('express');
 const db = require('./../models');
 const Tutorial = db.tutorials;
 const Comment = db.comments;
@@ -5,22 +6,19 @@ const Tag = db.tags;
 const Op = db.Sequelize.Op;
 
 exports.create = (req, res) => {
-    if (!req.body.title) {
+    
+    if (!req.body.title ) {
         res.status(400).send({
             message: "Title can not be empty"
         });
         return;
     }
     const tutorial = {
-        title: req.body.title,
+        title: req.body.title, 
         description: req.body.description,
         published: req.body.published ? req.body.published : false
     };
-    Tutorial.create({
-        title: tutorial.title,
-        description: tutorial.description,
-        published: tutorial.published ? tutorial.published : false
-    }).then((tutorial) => {
+    Tutorial.create(tutorial).then((tutorial) => {
         console.log(`>> Created Tutorial ${JSON.stringify(tutorial, null, 4)}`);
         res.send(tutorial);
     }).catch((err) => {

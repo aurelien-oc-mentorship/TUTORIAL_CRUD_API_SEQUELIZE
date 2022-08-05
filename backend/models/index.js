@@ -23,7 +23,7 @@ db.comments = require("./comment.model.js")(sequelize,Sequelize);
 db.tags = require("./tag.model.js")(sequelize, Sequelize);
 
 // Tutorials and Comments relationships
-db.tutorials.hasMany(db.comments, {as: "comments"});
+db.tutorials.hasMany(db.comments, {as: "comments", onDelete: 'cascade'});
 db.comments.belongsTo(db.tutorials, {
     foreignKey: "tutorialId",
     as: "tutorial",
